@@ -1,0 +1,60 @@
+{
+  "manifest_version": 3,
+  "name": "MiniClickr",
+  "version": "1.0",
+  "description": "Simple and lightweight auto clicker + macro recorder. Record, replay and interval click with ease.",
+  "icons": {
+    "16": "icon128.png",
+    "32": "icon128.png",
+    "48": "icon128.png",
+    "128": "icon128.png"
+  },
+  "permissions": [
+    "activeTab",
+    "scripting",
+    "storage"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "MiniClickr",
+    "default_icon": {
+      "16": "icon128.png",
+      "32": "icon128.png",
+      "48": "icon128.png",
+      "128": "icon128.png"
+    }
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "commands": {
+    "toggle-interval": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+C"
+      },
+      "description": "Toggle Interval Clicker"
+    },
+    "toggle-record": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+R"
+      },
+      "description": "Toggle Recording"
+    },
+    "toggle-play": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+P"
+      },
+      "description": "Toggle Play / Stop"
+    }
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ]
+}
